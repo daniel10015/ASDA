@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Bar</title>
+    <link rel="stylesheet" href="static/styles.css" />
+  </head>
+  <body>
+    <!-- ... other code ... -->
+
+    <form id="search-form">
+      <input type="text" name="city_name" placeholder="Enter City" />
+      <input type="text" name="state_name" placeholder="Enter State" />
+      <input
+        type="text"
+        name="AGR_name"
+        placeholder="Enter the range for Annual Gross Revenue"
+      />
+      <input
+        type="text"
+        name="ANR_name"
+        placeholder="Enter the range for Annual Net Revenue"
+      />
+      <input type="button" value="Search" id="submit-btn" />
+    </form>
+
+    <div id="server-response"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#submit-btn").click(function () {
+          var formData = $("#search-form").serialize();
+          $.post("/handle_search", formData, function (response) {
+            $("#server-response").html(response);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
