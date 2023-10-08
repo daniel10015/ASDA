@@ -12,13 +12,13 @@ def index():
 
 def parseDict(list):
     if list == []:
-        return ""
+        return "No Data found. Check fields for possible errors"
     outputStr = ""
     for i in list:
         if ord(i["annual_net_revenue"][0]) & ord('N') is not ord('N') and 'gross_revenue' in i.keys():
-            str = f"{i['name']} <br/>&nbsp&nbsp&nbsp&nbspEIN: {i['EIN']} <br/>&nbsp&nbsp&nbsp&nbspCity/State: {i['city']}/{i['state']} <br/>&nbsp&nbsp&nbsp&nbspAnnual Revenue: {i['annual_net_revenue']} <br/>&nbsp&nbsp&nbsp&nbspNet Revenue: {i['gross_revenue']}<br/>"
+            str = f"<b>{i['name']}</b> <br/>&nbsp&nbsp&nbsp&nbspEIN: {i['EIN']} <br/>&nbsp&nbsp&nbsp&nbspCity/State: {i['city']}/{i['state']} <br/>&nbsp&nbsp&nbsp&nbspAnnual Revenue: {i['annual_net_revenue']} <br/>&nbsp&nbsp&nbsp&nbspNet Revenue: {i['gross_revenue']}<br/><br/>"
         else:
-            str = f"{i['name']} <br/>&nbsp&nbsp&nbsp&nbspEIN: {i['EIN']} <br/>&nbsp&nbsp&nbsp&nbspCity/State: {i['city']}/{i['state']} <br/>&nbsp&nbsp&nbsp&nbspAnnual Revenue: {i['annual_net_revenue']}<br/>"
+            str = f"<b>{i['name']}</b> <br/>&nbsp&nbsp&nbsp&nbspEIN: {i['EIN']} <br/>&nbsp&nbsp&nbsp&nbspCity/State: {i['city']}/{i['state']} <br/>&nbsp&nbsp&nbsp&nbspAnnual Revenue: {i['annual_net_revenue']}<br/><br/>"
         outputStr += str
     return outputStr
 
@@ -122,7 +122,7 @@ def search_nonprofit_salaries(stateName=None, cityName=None, minGrossRev=0, maxG
                 if Compare(minGrossRev, maxGrossRev, int(item["gross_net_revenue"])) and Compare(minTotalRev, maxTotalRev, int(item["annual_net_revenue"])):
                   #print("good both")
                   final_ans.append(item)
-        
+    
     return final_ans
 
 
