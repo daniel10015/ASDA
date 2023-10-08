@@ -1,20 +1,19 @@
-const apiUrl = 'https://api.example.com/nonprofit-explorer'; // Replace with the actual API URL
+// Using the Fetch API
+let state = 'NY'
+fetch('https://projects.propublica.org/nonprofits/api/v2/search.json?q=' + state)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
 
-// Make a GET request to the Nonprofit Explorer API
-fetch(apiUrl)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json(); // Parse the response as JSON
-  })
-  .then((data) => {
-    // Handle the JSON data here
+// Using async/await
+async function getNonprofitData() {
+  try {
+    const response = await fetch('https://projects.propublica.org/nonprofits/api/v2/search.json?q=' + state);
+    const data = await response.json();
     console.log(data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
 
-    // You can now work with the 'data' object, which contains the JSON response.
-    // Perform operations or display the data as needed.
-  })
-  .catch((error) => {
-    console.error('There was a problem with the fetch operation:', error);
-  });
+getNonprofitData();
