@@ -10,17 +10,22 @@
     <!-- ... other code ... -->
 
     <form id="search-form">
+      <h1>990 Tax Form Search Engine</h1>
       <input type="text" name="city_name" placeholder="Enter City" />
-      <input type="text" name="state_name" placeholder="Enter State" />
+      <input
+        type="text"
+        name="state_name"
+        placeholder="Enter State abbreviation (eg. AZ)"
+      />
       <input
         type="text"
         name="AGR_name"
-        placeholder="Enter the range for Annual Gross Revenue"
+        placeholder="Enter range for Annual Gross Revenue as <number,number> (leave blank if no filter)"
       />
       <input
         type="text"
         name="ANR_name"
-        placeholder="Enter the range for Annual Net Revenue"
+        placeholder="Enter range for Annual Net Revenue as <number,number> (leave blank if no filter)"
       />
       <input type="button" value="Search" id="submit-btn" />
     </form>
